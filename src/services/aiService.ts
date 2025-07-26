@@ -4,7 +4,7 @@ import { AIPartner, Message } from '../types';
 export const generateAIResponse = async (
   userMessage: string,
   aiPartner: AIPartner,
-  conversationHistory: Message[]
+  _conversationHistory: Message[]
 ): Promise<string> => {
   // 実際のAI APIの代わりに、パートナーの性格に基づいた応答を生成
   const responses = getResponsesByPartner(aiPartner);
@@ -57,7 +57,7 @@ const getResponsesByPartner = (partner: AIPartner) => {
 };
 
 // ユーザーのメッセージに基づいて応答を選択
-const selectResponse = (userMessage: string, responses: any, partner: AIPartner): string => {
+const selectResponse = (userMessage: string, responses: any, _partner: AIPartner): string => {
   const message = userMessage.toLowerCase();
   
   // 挨拶系
@@ -91,9 +91,9 @@ const selectResponse = (userMessage: string, responses: any, partner: AIPartner)
 };
 
 // 学習セッションの要約を生成
-export const generateSummary = (messages: Message[], aiPartner: AIPartner): string => {
+export const generateSummary = (messages: Message[], _aiPartner: AIPartner): string => {
   const userMessages = messages.filter(m => m.sender === 'user');
-  const aiMessages = messages.filter(m => m.sender === 'ai');
+  const _aiMessages = messages.filter(m => m.sender === 'ai');
   
   const summaryParts = [];
   
